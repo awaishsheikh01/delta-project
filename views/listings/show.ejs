@@ -37,9 +37,16 @@
       >Edit</a
     >
     <!-- Delete button  -->
-    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-      <button class="btn btn-dark offset-5">Delete</button>
-    </form>
+    <% if (currentUser && review.author && review.author._id.equals(currentUser._id)) { %>
+  <form
+    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+    method="POST"
+    class="d-inline"
+  >
+    <button class="btn btn-danger btn-sm">Delete</button>
+  </form>
+<% } %>
+
   </div>
 
 <% } %>
